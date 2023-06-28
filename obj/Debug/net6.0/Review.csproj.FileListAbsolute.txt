@@ -1,0 +1,15 @@
+C:\Users\DELL\source\repos\Review\Review\bin\Debug\net6.0\Review.exe
+C:\Users\DELL\source\repos\Review\Review\bin\Debug\net6.0\Review.deps.json
+C:\Users\DELL\source\repos\Review\Review\bin\Debug\net6.0\Review.runtimeconfig.json
+C:\Users\DELL\source\repos\Review\Review\bin\Debug\net6.0\Review.dll
+C:\Users\DELL\source\repos\Review\Review\bin\Debug\net6.0\Review.pdb
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.AssemblyInfo.cs
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.dll
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\refint\Review.dll
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.pdb
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\Review.genruntimeconfig.cache
+C:\Users\DELL\source\repos\Review\Review\obj\Debug\net6.0\ref\Review.dll
