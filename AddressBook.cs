@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AddressBook;
+using OopsConcept;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,8 +42,20 @@ namespace OopsConcept
             String zip = Console.ReadLine();
 
             Contact contact = new Contact(firstName, lastName, address, city, state, phoneNumber, zip);
-            list.Add(contact);
+           
+            
+            foreach (Contact dc in list)
+            {
+                if (dc.PhoneNumber == phoneNumber)
+                {
+              
+                    throw new DuplicateContactException("Duplicate Contact Found **** Please add valid Number");
 
+                }
+
+            }
+
+            list.Add(contact);
             Console.WriteLine("Contact added successfully!");
 
 
@@ -53,13 +67,13 @@ namespace OopsConcept
             String editName = Console.ReadLine();
 
            foreach (Contact contact in list)
-            { 
+            {
                 if (editName.Equals(contact.FirstName))
                 {
 
                     Console.WriteLine("Enter the Number to edit particular option : ");
                     Console.WriteLine("Enter Numer \n 1 - First Name \n 2 - Last Name \n 3 - Adress \n 4 -  City \n 5 - State \n 6 - Phone Number \n 7 - Zip");
-                    int no=int.Parse(Console.ReadLine());
+                    int no = int.Parse(Console.ReadLine());
 
                     if (no == 1)
                     {
@@ -67,7 +81,7 @@ namespace OopsConcept
                         contact.FirstName = Console.ReadLine();
                     }
 
-                    else if (no == 2) 
+                    else if (no == 2)
                     {
                         Console.WriteLine("Enter  new Last name ");
                         contact.LastName = Console.ReadLine();
@@ -103,6 +117,11 @@ namespace OopsConcept
                         contact.Zip = Console.ReadLine();
                     }
                 }
+                else 
+                {
+                    throw new ContactNotFoundException("Contact Not Found **** please enter valid Name");
+                }
+                
 
             }
             Console.WriteLine("Contact edited successfully!");
@@ -113,9 +132,6 @@ namespace OopsConcept
         {
             Console.WriteLine("Enter the name to delete details : ");
             String deleteName = Console.ReadLine();
-
-
-            List<Contact> contactsToDelete = new List<Contact>();
 
             foreach (Contact contact in list)          
             {
@@ -128,7 +144,7 @@ namespace OopsConcept
 
                     if (choose == 1)
                     {
-                        contactsToDelete.Add(contact);
+                        list.Remove(contact);
                         Console.WriteLine("Contact is Deleted!!");
                     }
                     else if(choose == 2) 
@@ -138,15 +154,17 @@ namespace OopsConcept
 
                     else 
                     {
-                        Console.WriteLine("Please select valid Number");
+                        Console.WriteLine("You Entered InValid Number");
                     }
                 }
+                else
+                {
+                    throw new ContactNotFoundException("Contact Not Found **** please enter valid Name");
+                }
+
             }
 
-            foreach (Contact contactToDelete in contactsToDelete)
-            {
-                list.Remove(contactToDelete);
-            }
+           
         }
 
         public void DisplayContact()
@@ -156,7 +174,7 @@ namespace OopsConcept
             
             foreach (Contact contact in list) 
             {
-                if(displayName == contact.FirstName) 
+                if (displayName == contact.FirstName)
                 {
                     Console.WriteLine($"Details of {contact.FirstName}");
                     Console.WriteLine($"First Name: {contact.FirstName}");
@@ -167,7 +185,11 @@ namespace OopsConcept
                     Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
                     Console.WriteLine($"Zip: {contact.Zip}");
                 }
-            
+                else 
+                {
+                    throw new ContactNotFoundException("Contact Not Found **** please enter valid Name");
+                }
+
             }
         }
         public void Display()

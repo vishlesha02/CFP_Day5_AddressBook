@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AddressBook;
+using OopsConcept;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -20,36 +22,47 @@ namespace OopsConcept
                 int num = int.Parse(Console.ReadLine());
                 Console.WriteLine();
 
-                if (num == 1)
+                try
                 {
-                    ab.AddContacts();
-                }
-                
+                    if (num == 1)
+                    {
+                        ab.AddContacts();
+                    }
 
-                else if (num == 2)
+
+                    else if (num == 2)
+                    {
+                        ab.EditContact();
+                    }
+
+                    else if (num == 3)
+                    {
+                        ab.DeleteContact();
+                    }
+
+                    else if (num == 4)
+                    {
+                        ab.DisplayContact();
+                    }
+
+                    else if (num == 5)
+                    {
+                        ab.Display();
+                    }
+
+                    else
+                    {
+                        break;
+
+                    }
+                }
+                catch (DuplicateContactException ex)
                 {
-                    ab.EditContact();
+                    Console.WriteLine($"DuplicateContactException { ex.Message}");
                 }
-
-                else if (num == 3)
-                { 
-                    ab.DeleteContact();
-                }
-
-                else if (num == 4)
+                catch(ContactNotFoundException e) 
                 {
-                    ab.DisplayContact();
-                }
-
-                else if (num == 5)
-                {
-                    ab.Display();
-                }
-
-                else
-                {
-                    break;
-
+                    Console.WriteLine($"ContactNotFound {e.Message}");
                 }
                 Console.WriteLine();
 
