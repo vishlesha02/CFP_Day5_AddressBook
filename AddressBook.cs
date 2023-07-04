@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OopsConcept
@@ -17,14 +18,40 @@ namespace OopsConcept
         List<Contact> list = new List<Contact>();
         public void AddContacts()
         {
+            bool flag1 = true; 
+            bool flag2 = true;
+            bool flag3 = true;
+
             Console.WriteLine("Enter the details to add a contact : ");
 
 
             Console.WriteLine("Enter The First Name");
             String firstName = Console.ReadLine();
 
+            Regex checkName = new Regex("^[A-Z][a-z]{2,}");
+            Match match = checkName.Match(firstName);
+            if (match.Success)
+            {
+                flag1 = true;
+            }
+            else
+            {
+                flag1 = false;
+            }
+
             Console.WriteLine("Enter Last Name");
             String lastName = Console.ReadLine();
+
+            Regex checkLastName = new Regex("^[A-Z][a-z]{2,}");
+            Match LastNamematch = checkLastName.Match(lastName);
+            if (LastNamematch.Success)
+            {
+                flag1 = true;
+            }
+            else
+            {
+                flag1 = false;
+            }
 
             Console.WriteLine("Enter Address");
             String address = Console.ReadLine();
@@ -38,25 +65,45 @@ namespace OopsConcept
             Console.WriteLine("Enter Phone Number");
             String phoneNumber = Console.ReadLine();
 
+            Regex checkPhoneNumber = new Regex(@"^\+?\d{1,3}\s\d{10}$");
+            Match PhoneNumberMatch = checkPhoneNumber.Match(phoneNumber);
+            if (PhoneNumberMatch.Success)
+            {
+                flag1 = true;
+            }
+            else
+            {
+                flag1 = false;
+            }
+
             Console.WriteLine("Enter Zip");
             String zip = Console.ReadLine();
 
-            Contact contact = new Contact(firstName, lastName, address, city, state, phoneNumber, zip);
-           
-            
-            foreach (Contact dc in list)
+            if (flag1 && flag2 && flag3)
             {
-                if (dc.PhoneNumber == phoneNumber)
+                Contact contact = new Contact(firstName, lastName, address, city, state, phoneNumber, zip);
+                foreach (Contact dc in list)
                 {
-              
-                    throw new DuplicateContactException("Duplicate Contact Found **** Please add valid Number");
+                    if (dc.PhoneNumber == phoneNumber)
+                    {
+
+                        throw new DuplicateContactException("Duplicate Contact Found **** Please add valid Number");
+
+                    }
 
                 }
 
-            }
+                list.Add(contact);
+                Console.WriteLine("Contact added successfully!");
 
-            list.Add(contact);
-            Console.WriteLine("Contact added successfully!");
+            }
+            else 
+            {
+                Console.WriteLine("Enter valid Details");
+            }
+           
+            
+           
 
 
         }
